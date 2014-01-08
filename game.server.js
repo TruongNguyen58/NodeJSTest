@@ -61,8 +61,8 @@ game_server.chat = function(obj) {
 	obj.players.forEach(function(player) {
 		if (clients.hasOwnProperty(player)) {
 			//console.log("begin chat with user: " + player + " -- ID: "
-					+ clients[player] + " -- dataToSend: "
-					+ JSON.stringify(dataToSend));
+					// + clients[player] + " -- dataToSend: "
+					// + JSON.stringify(dataToSend));
 			app_server.sendMsgToClient(clients[player], dataToSend);
 		}
 	});
@@ -139,8 +139,8 @@ game_server.onUserDisconnect = function(sId) {
 				var gameId = currentGameOfPlayer[playerId];
 				if (games.hasOwnProperty(gameId)) {
 					//console.log("games[gameId].playing: "
-							+ games[gameId].playing + " -- "
-							+ typeof games[gameId].playing);
+							// + games[gameId].playing + " -- "
+							// + typeof games[gameId].playing);
 					if (games[gameId].playing == false
 							|| games[gameId].playing == "false") {
 						var obj = {
@@ -233,7 +233,7 @@ game_server.getAvailablePlayers = function(sId, obj) {
 
 	} catch (err) {
 		//console.log("Error when get getAvailablePlayers: "
-				+ JSON.stringify(err));
+				// + JSON.stringify(err));
 	}
 }; //game_server.getAvailablePlayers
 
@@ -593,7 +593,7 @@ function onQuizAnswer(obj) {
 				} else {
 					setTimeout(function() {
 						//console.log("currentRound: " + games[_id].currentRound
-								+ " --- Total round: " + games[_id].round);
+								// + " --- Total round: " + games[_id].round);
 						endgame(_id);
 					}, 1 * 1000);
 				}
@@ -604,7 +604,7 @@ function onQuizAnswer(obj) {
 		}
 	} else {
 		//console
-				.log(" nonnnnnnnnnnnnnnnn games.hasOwnProperty(_id) && (games.currRound === round) ");
+				// .log(" nonnnnnnnnnnnnnnnn games.hasOwnProperty(_id) && (games.currRound === round) ");
 	}
 }
 
@@ -701,7 +701,7 @@ function endWhenPlayerQuitGame(_id, notice, data) {
 	clearTimeout(recordIntervals[_id]);
 	if (games.hasOwnProperty(_id)) {
 		//console.log("End game! zzzzzzzzzzzzzzzzz: "
-				+ JSON.stringify(games[_id]));
+				// + JSON.stringify(games[_id]));
 		var dataToSend = {};
 		dataToSend.notice = notice;
 		data.scores = games[_id].scores;
@@ -720,7 +720,7 @@ function endWhenPlayerQuitGame(_id, notice, data) {
 			delete games[_id];
 		} catch (err) {
 			//console.log("Error when delete data to endGame: "
-					+ JSON.stringify(err));
+					// + JSON.stringify(err));
 		}
 	}
 }
@@ -730,7 +730,7 @@ function endgame(_id) {
 	// clearInterval(gameTimers[_id]);
 	if (games.hasOwnProperty(_id)) {
 		//console.log("End game! zzzzzzzzzzzzzzzzz: "
-				+ JSON.stringify(games[_id]));
+				// + JSON.stringify(games[_id]));
 		var dataToSend = {};
 		dataToSend.notice = "endGame";
 		dataToSend.data = {
@@ -753,7 +753,7 @@ function endgame(_id) {
 				delete games[_id];
 			} catch (err) {
 				//console.log("Error when delete data to endGame: "
-						+ JSON.stringify(err));
+						// + JSON.stringify(err));
 			}
 		}, 3 * 1000);
 	}
