@@ -600,7 +600,7 @@ function onQuizAnswer(obj) {
 			}
 		} catch (err) {
 			//console.log("Error when process player answer: "
-					+ JSON.stringify(err));
+					// + JSON.stringify(err));
 		}
 	} else {
 		//console
